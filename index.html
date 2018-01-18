@@ -1,0 +1,175 @@
+<div class="slidershow-container">
+    <div class="slide fade">
+        <div class="slide-number">1/3</div>
+        <img class="slider-img" src="https://images.ua.prom.st/373087815_w800_h640_img_0030.jpg" alt="" >
+        <div class="slider-text">инфракрасное отопление</div>
+    </div>
+
+    <div class="slide fade">
+        <div class="slide-number">2/3</div>
+        <img src="https://images.ua.prom.st/838686927_w800_h640_obogrevatel_ar__lov_a500_1.jpg" alt="" >
+        <div class="slider-text">Потолочные обогреватели</div>
+    </div>
+
+    <div class="slide fade">
+        <div class="slide-number">3/3</div>
+        <img class="slider-img" src="https://images.ua.prom.st/392859126_w800_h640_2.jpg" alt="" >
+        <div class="slider-text">Фильтры очистки воды</div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094</a>
+    <a class="next" onclick="plusSlides(1)">&#10095</a>
+   
+    <div class="slider-dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+</div>
+    <style>
+    .slidershow-container{
+        max-width: 800px;
+        position: relative;
+        margin: auto;
+        max-height: 400px;
+    }
+    .slide{
+        position: relative;
+    }
+    .slider-img{
+        width: 100%;
+        max-height: 400px;
+    }
+    /* NAV */
+    .prev, .next{
+        position: absolute;
+        top:50%;
+        margin-top: -22px;
+        
+        width: auto;
+        padding: 16px;
+        border-radius: 0 3px 3px 0;
+        color: white;    
+        background-color: rgba(0, 0, 0, 0.3);
+
+        font-size: 18px;
+        font-weight: bold;
+
+        cursor: pointer;
+        transition: 0.6s easy;
+    }
+    .next{
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    .prev:hover,.next:hover{
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .slide_number{
+        /* color: #f2f2f2; */
+        /* font-size: 12px; */
+        /* padding: 8px 12px; */
+        position: absolute;
+        padding: 15px;
+        top:0;
+    }
+    /* Text */
+    .slider-text{
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+
+        margin-left: -195px;
+        margin-bottom: 30px;
+        padding: 8px 12px;
+
+        color: orangered;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 30px;
+    }
+    /* Dots */
+    .slider-dots{
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        /* margin-left: -30px; */
+        /* margin-top: 40px; */
+        margin-bottom: 0px;
+    }
+    .dot{
+        height: 13px;
+        width: 13px;
+        margin: 0 2px;
+
+        display: inline-block;
+        cursor: pointer;
+
+        background-color:olivedrab;
+        border:1px solid;
+        border-color: olive;
+        border-radius: 50%;
+        
+        transition: 0.6s easy;
+    }
+    .active, .dot:hover{
+        background-color: orangered;
+        border-color: orange;
+    }
+    /* animate */
+    .fade{
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @-webkit-keyframes fade{
+        from{opacity: .4}
+        to{opacity: 1}
+    }
+    @keyframes fade{
+        from{opacity: .4}
+        to{opacity: 1}
+    }
+    </style>
+    
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function showSlides(n){
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        var dots = document.getElementsByClassName("dot");
+
+        if(n > slides.length){
+            slideIndex = 1;
+        }
+        if(n < 1){
+            slideIndex = slides.length;
+        }
+        for(i=0; i < slides.length; i++){
+            slides[i].style.display = "none";
+        }
+
+        for(i=0; i < dots.length; i++){
+            dots[i].className = dots[i].className.replace("active","");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    function plusSlides(n){
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n){
+        showSlides(slideIndex = n);
+    }
+
+    function slideTime(n){
+        n=1;
+        showSlides(slideIndex += n);
+    }
+
+        setInterval(slideTime, 5000);
+    </script>
